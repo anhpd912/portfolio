@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* DESIGN.md tokens, verbatim */
+  --font-family-primary: "Space Grotesk", sans-serif;
+  --font-size-base: 18px;
+  --font-weight-base: 700;
+  --line-height-base: 28px;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+  --font-size-3xl: 30px;
+  --font-size-4xl: 36px;
+
+  --color-text-primary: oklch(0 0 0);
+  --color-text-secondary: oklab(0 0 0 / 0.8);
+  --color-surface-base: #ffe1d6;
+  --color-text-inverse: oklch(0.373 0.034 259.733);
+  --color-surface-muted: #ffd23f;
+  --color-surface-raised: #fffdf5;
+  --color-surface-strong: #74b9ff;
+  --color-accent-orange: #ffb05c;
+  --color-accent-red: #ff8585;
+  --color-accent-green: #8fe3ad;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 40px;
+  --space-8: 48px;
+
+  --shadow-hard: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, oklch(0 0 0) 4px 4px 0px 0px;
+  --shadow-flat: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+
+  --motion-instant: 150ms;
+  --motion-fast: 200ms;
+  --motion-normal: 500ms;
+
+  /* surface-base is now light (peach) — on-base text uses the same black
+     primary as on-raised; kept as a separate token for semantic clarity */
+  --color-text-on-base: var(--color-text-primary);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-surface-base: var(--color-surface-base);
+  --color-surface-raised: var(--color-surface-raised);
+  --color-accent-yellow: var(--color-surface-muted);
+  --color-accent-blue: var(--color-surface-strong);
+  --color-accent-orange: var(--color-accent-orange);
+  --color-accent-red: var(--color-accent-red);
+  --color-accent-green: var(--color-accent-green);
+  --color-text-on-base: var(--color-text-on-base);
+  --color-text-on-raised: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --font-display: var(--font-space-grotesk), var(--font-family-primary);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@utility shadow-hard {
+  box-shadow: var(--shadow-hard);
+}
+
+@utility shadow-flat {
+  box-shadow: var(--shadow-flat);
+}
+
+@utility lazy-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-surface-base);
+  color: var(--color-text-on-base);
+  font-family: var(--font-display);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-base);
+  line-height: var(--line-height-base);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-surface-strong);
+  outline-offset: 2px;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
