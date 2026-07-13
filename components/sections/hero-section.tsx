@@ -23,7 +23,7 @@ export function HeroSection() {
       <SectionPanel className="flex flex-col items-start gap-8 sm:flex-row sm:items-center">
         <div className="h-40 w-40 shrink-0 overflow-hidden border-4 border-current shadow-hard">
           <Image
-            src="/images/me/me.jpg"
+            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/me/me.jpg`}
             alt="Phan Duc Anh"
             width={160}
             height={160}
@@ -49,6 +49,13 @@ export function HeroSection() {
             </Button>
             <Button href={`mailto:${CONTACT_EMAIL}`} variant="ghost">
               Get in Touch
+            </Button>
+            <Button
+              href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/cv/${encodeURIComponent("Phan Duc Anh_CV.pdf")}`}
+              variant="blue"
+              download
+            >
+              Download CV
             </Button>
           </div>
           <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-4">

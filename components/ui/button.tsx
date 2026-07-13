@@ -5,6 +5,7 @@ type ButtonProps = {
   variant?: ButtonVariant;
   href?: string;
   external?: boolean;
+  download?: boolean;
 };
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
@@ -21,7 +22,7 @@ const BASE_CLASSES =
   "shadow-hard transition-transform duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 " +
   "active:translate-x-0 active:translate-y-0 active:shadow-flat";
 
-export function Button({ children, variant = "yellow", href, external }: ButtonProps) {
+export function Button({ children, variant = "yellow", href, external, download }: ButtonProps) {
   const className = `${BASE_CLASSES} ${VARIANT_CLASSES[variant]}`;
 
   if (href) {
@@ -30,6 +31,7 @@ export function Button({ children, variant = "yellow", href, external }: ButtonP
         href={href}
         className={className}
         {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        {...(download ? { download: "" } : {})}
       >
         {children}
       </a>
