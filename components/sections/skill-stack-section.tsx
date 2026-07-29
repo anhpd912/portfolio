@@ -1,57 +1,39 @@
-import { SectionPanel } from "@/components/ui/section-panel";
-
-type SkillGroup = {
-  title: string;
-  bg: string;
-  skills: string[];
-};
-
-const GROUPS: SkillGroup[] = [
-  {
-    title: "Languages",
-    bg: "bg-accent-blue/30",
-    skills: ["Java", "Python", "TypeScript", "JavaScript"],
-  },
-  {
-    title: "Data & Infra",
-    bg: "bg-accent-green/30",
-    skills: ["PostgreSQL", "Redis", "MySQL", "Docker", "Nginx", "CI/CD"],
-  },
-  {
-    title: "Tools",
-    bg: "bg-accent-yellow/30",
-    skills: ["Git/GitHub", "Postman", "Grafana", "Prometheus"],
-  },
-];
+import { Reveal } from "@/components/ui/reveal";
+import { ICON_MAP } from "@/components/ui/icons";
+import { SERVICES } from "@/lib/skills";
 
 export function SkillStackSection() {
   return (
-    <section id="skills" aria-labelledby="skills-heading" className="lazy-section flex flex-col px-4 py-10 sm:px-8 sm:py-12">
-      <SectionPanel className="flex flex-col gap-8">
-        <h2 id="skills-heading" className="font-display text-3xl font-bold text-text-on-raised">
-          Tools and Technologies I Work With
-        </h2>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {GROUPS.map((group) => (
-            <div
-              key={group.title}
-              className={`flex flex-col gap-3 border-2 border-current p-6 shadow-hard ${group.bg}`}
-            >
-              <h3 className="font-display text-lg font-bold text-text-on-raised">{group.title}</h3>
-              <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="border-2 border-current bg-surface-raised px-2 py-1 text-xs font-bold text-text-on-raised"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
+    <section id="skills" aria-labelledby="skills-heading" className="lazy-section py-32">
+      <div className="mx-auto max-w-6xl px-6">
+        <Reveal className="mb-16 max-w-xl">
+          <div className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-accent-a">
+            What I do
+          </div>
+          <h2 id="skills-heading" className="m-0 text-[clamp(36px,5vw,60px)] font-black leading-tight tracking-tight">
+            Skills built for real-world systems
+          </h2>
+        </Reveal>
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          {SERVICES.map((service) => {
+            const Icon = ICON_MAP[service.icon];
+            return (
+              <Reveal key={service.title}>
+                <div className="group relative min-h-60 overflow-hidden rounded-3xl border border-border-subtle bg-white/5 p-10 backdrop-blur-2xl transition-[border-color,transform] duration-300 hover:-translate-y-1 hover:border-white/30">
+                  <div className="absolute right-0 top-0 flex h-[110px] w-[110px] items-start justify-end rounded-bl-[110px] bg-gradient-to-br from-accent-a/[0.18] to-accent-b/[0.18] p-6 text-accent-a">
+                    <Icon size={26} />
+                  </div>
+                  <div className="mb-4 text-xs font-bold uppercase tracking-[0.2em] text-gray-600">
+                    0{service.num}
+                  </div>
+                  <h3 className="mb-3 text-[26px] font-extrabold tracking-tight">{service.title}</h3>
+                  <p className="max-w-[380px] font-light leading-relaxed text-gray-400">{service.desc}</p>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
-      </SectionPanel>
+      </div>
     </section>
   );
 }

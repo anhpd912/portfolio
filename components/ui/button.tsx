@@ -1,42 +1,34 @@
-type ButtonVariant = "yellow" | "blue" | "outline" | "ghost";
+type ButtonVariant = "primary" | "ghost";
 
 type ButtonProps = {
   children: React.ReactNode;
   variant?: ButtonVariant;
-  href?: string;
+  href: string;
   external?: boolean;
   download?: boolean;
+  className?: string;
 };
 
 const VARIANT_CLASSES: Record<ButtonVariant, string> = {
-  yellow: "bg-accent-yellow text-text-on-raised border-current",
-  blue: "bg-accent-blue text-text-on-raised border-current",
-  // for dark (surface-base) backgrounds, e.g. Hero
-  outline: "bg-transparent text-text-on-base border-current",
-  // for light/colored (surface-raised, accent) backgrounds, e.g. ProjectCard
-  ghost: "bg-transparent text-text-on-raised border-current",
+  primary:
+    "bg-white text-black hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)] active:scale-95",
+  ghost:
+    "border border-border-subtle text-white hover:border-white/30 hover:scale-105 active:scale-95",
 };
 
 const BASE_CLASSES =
-  "inline-flex min-h-11 items-center justify-center gap-2 border-2 px-6 py-3 font-display text-md font-bold " +
-  "shadow-hard transition-transform duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 " +
-  "active:translate-x-0 active:translate-y-0 active:shadow-flat";
+  "inline-flex items-center gap-2 rounded-full px-6 py-3 font-display text-sm font-bold " +
+  "transition-transform duration-200";
 
-export function Button({ children, variant = "yellow", href, external, download }: ButtonProps) {
-  const className = `${BASE_CLASSES} ${VARIANT_CLASSES[variant]}`;
-
-  if (href) {
-    return (
-      <a
-        href={href}
-        className={className}
-        {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-        {...(download ? { download: "" } : {})}
-      >
-        {children}
-      </a>
-    );
-  }
-
-  return <button type="button" className={className}>{children}</button>;
+export function Button({ children, variant = "primary", href, external, download, className = "" }: ButtonProps) {
+  return (
+    <a
+      href={href}
+      className={`${BASE_CLASSES} ${VARIANT_CLASSES[variant]} ${className}`}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      {...(download ? { download: "" } : {})}
+    >
+      {children}
+    </a>
+  );
 }

@@ -1,76 +1,58 @@
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { SectionPanel } from "@/components/ui/section-panel";
-import { CONTACT_EMAIL } from "@/lib/projects";
+"use client";
 
-const STATS: { label: string; value: string; accent: "orange" | "red" | "green" | "yellow" }[] = [
-  { label: "projects", value: "2+", accent: "orange" },
-  { label: "tech stack", value: "5+", accent: "red" },
-  { label: "languages", value: "4", accent: "green" },
-  { label: "github repos", value: "10+", accent: "yellow" },
-];
+import { useHeroParallax } from "@/hooks/use-hero-parallax";
+import { ChevronIcon } from "@/components/ui/icons";
 
-const STAT_BG: Record<(typeof STATS)[number]["accent"], string> = {
-  orange: "bg-accent-orange",
-  red: "bg-accent-red",
-  green: "bg-accent-green",
-  yellow: "bg-accent-yellow",
-};
+const HERO_BG_1 =
+  "https://strvid.nyc3.cdn.digitaloceanspaces.com/cloudinary/hero_city_outline_fzg37d.jpg";
+const HERO_BG_2 =
+  "https://strvid.nyc3.cdn.digitaloceanspaces.com/cloudinary/hero_city_iglhwn.jpg";
 
 export function HeroSection() {
+  const { sectionRef, revealRef, bg1Ref, bg2Ref, chevronRef } = useHeroParallax();
+
   return (
-    <section id="hero" className="flex min-h-screen flex-col items-center justify-center px-4 py-16 sm:px-8">
-      <SectionPanel className="flex flex-col items-start gap-8 sm:flex-row sm:items-center">
-        <div className="h-40 w-40 shrink-0 overflow-hidden border-4 border-current shadow-hard">
-          <Image
-            src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/me/me.jpg`}
-            alt="Phan Duc Anh"
-            width={160}
-            height={160}
-            className="h-full w-full object-cover"
-            priority
+    <section id="top" ref={sectionRef} className="relative h-[300vh]">
+      <div className="sticky top-0 h-screen overflow-hidden">
+        <div
+          ref={bg1Ref}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url('${HERO_BG_1}')` }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+          <div className="mb-6 text-xs font-bold uppercase tracking-[0.3em] text-gray-400">
+            Phan Đức Anh — Java Back-end Developer
+          </div>
+          <h1 className="m-0 text-[clamp(48px,8vw,120px)] font-black leading-[1.1] tracking-tighter">
+            Imagine the Product
+          </h1>
+        </div>
+
+        <div ref={revealRef} className="absolute inset-0" style={{ clipPath: "circle(0% at 50% 50%)" }}>
+          <div
+            ref={bg2Ref}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('${HERO_BG_2}')` }}
           />
-        </div>
-        <div className="flex w-full flex-1 flex-col items-start gap-6">
-          <h1 className="font-display text-4xl font-bold text-text-on-raised">Phan Duc Anh</h1>
-          <p className="max-w-3xl text-text-on-raised">
-            Fresher backend developer from Hanoi, Vietnam, building scalable
-            distributed systems and high-throughput services. I work mainly with
-            RESTful APIs, relational databases like PostgreSQL and MySQL, and
-            basic caching with Redis, deployed through Docker and CI/CD
-            pipelines. Bachelor of Software Engineering from FPT University
-            (Korean Software Engineering Specialization). Still early in my
-            career, hungry to learn, and looking for a backend or platform
-            engineering team to grow with — remote or hybrid.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Button href="#projects" variant="yellow">
-              View Projects
-            </Button>
-            <Button href={`mailto:${CONTACT_EMAIL}`} variant="ghost">
-              Get in Touch
-            </Button>
-            <Button
-              href={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/cv/${encodeURIComponent("Phan Duc Anh_CV.pdf")}`}
-              variant="blue"
-              download
-            >
-              Download CV
-            </Button>
-          </div>
-          <div className="grid w-full grid-cols-2 gap-3 sm:grid-cols-4">
-            {STATS.map((stat) => (
-              <div
-                key={stat.label}
-                className={`flex flex-col gap-1 border-2 border-current p-4 text-text-on-raised shadow-hard ${STAT_BG[stat.accent]}`}
-              >
-                <span className="font-display text-2xl font-bold">{stat.value}</span>
-                <span className="text-xs font-bold">{stat.label}</span>
-              </div>
-            ))}
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+            <div className="mb-6 text-xs font-bold uppercase tracking-[0.3em] text-gray-300">
+              Java · Spring Boot · AI &amp; RAG Systems
+            </div>
+            <div className="gradient-text text-[clamp(48px,8vw,120px)] font-black leading-[1.1] tracking-tighter">
+              I Build the Backend
+            </div>
           </div>
         </div>
-      </SectionPanel>
+
+        <div
+          ref={chevronRef}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-[chevron-bounce_2s_ease-in-out_infinite] text-gray-400"
+        >
+          <ChevronIcon size={32} />
+        </div>
+      </div>
     </section>
   );
 }

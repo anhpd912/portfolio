@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Outfit } from "next/font/google";
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const outfit = Outfit({
+  variable: "--font-outfit",
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: "Phan Duc Anh — Backend Engineer",
-  description: "Portfolio of Phan Duc Anh, backend engineer building scalable distributed systems.",
+  title: "Phan Đức Anh — Java Back-end Developer",
+  description: "Portfolio of Phan Đức Anh, Java back-end developer building Spring Boot APIs and AI/RAG systems.",
   icons: {
     icon: "/favicon-rainbow-text.svg",
   },
@@ -21,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} h-full antialiased`}>
+    <html lang="en" className={`${outfit.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

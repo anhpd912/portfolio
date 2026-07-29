@@ -1,42 +1,96 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-is-mobile";
 import { CONTACT_EMAIL } from "@/lib/projects";
 
-const NAV_ITEMS = [
-  { href: "#hero", label: "Home", active: true },
+const NAV_LINKS = [
   { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
   { href: "#about", label: "About" },
-  { href: "#interests", label: "Interests" },
   { href: "#contact", label: "Contact" },
 ];
 
 export function SiteNav() {
+  const navRef = useRef<HTMLElement>(null);
+  const isMobile = useIsMobile();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const el = navRef.current;
+      if (!el) return;
+      const t = Math.min(1, window.scrollY / 50);
+      const blur = `blur(${Math.round(8 + 16 * t)}px)`;
+      el.style.background = `rgba(255,255,255,${(0.02 + 0.06 * t).toFixed(3)})`;
+      el.style.backdropFilter = blur;
+      el.style.setProperty("-webkit-backdrop-filter", blur);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav
-      aria-label="Primary"
-      className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b-2 border-current bg-surface-raised px-4 py-3 sm:px-8 sm:py-4"
-    >
-      <span className="border-2 border-current bg-accent-blue px-3 py-1 font-display text-lg font-bold text-text-on-raised">
-        PDA
-      </span>
-      <div className="flex gap-2">
-        {NAV_ITEMS.map((item) => (
-          <a
-            key={item.href}
-            href={item.href}
-            className={`min-h-11 border-2 px-3 py-2 font-display font-bold hover:underline active:translate-y-0.5 ${
-              item.active
-                ? "border-current bg-accent-green text-text-on-raised"
-                : "border-transparent text-text-on-base"
-            }`}
-          >
-            {item.label}
+    <header className="pointer-events-none fixed inset-x-0 top-6 z-50 flex justify-center px-4">
+      <nav
+        ref={navRef}
+        aria-label="Main"
+        className="pointer-events-auto w-full max-w-2xl border border-border-subtle bg-white/[0.02] px-3 py-2.5 pl-6 backdrop-blur-sm transition-[border-radius] duration-400"
+        style={{ borderRadius: menuOpen ? "24px" : "9999px" }}
+      >
+        <div className="flex items-center justify-between gap-6">
+          <a href="#top" className="font-display text-xl font-black tracking-tight">
+            DUCANH<span className="text-accent-a">.</span>
           </a>
-        ))}
-      </div>
-      <Button href={`mailto:${CONTACT_EMAIL}`} variant="yellow">
-        Let&apos;s talk
-      </Button>
-    </nav>
+          <div className={`items-center gap-8 ${isMobile ? "hidden" : "flex"}`}>
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="bg-gradient-to-r from-current to-current bg-[length:0%_1px] bg-no-repeat bg-bottom text-sm font-medium text-gray-300 transition-[background-size,color] duration-300 hover:bg-[length:100%_1px] hover:text-white"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
+          <div className="flex items-center gap-2.5">
+            {!isMobile && (
+              <Button href={`mailto:${CONTACT_EMAIL}`}>Hire Me</Button>
+            )}
+            <button
+              type="button"
+              onClick={() => setMenuOpen((open) => !open)}
+              aria-label="Toggle menu"
+              className={`h-10 w-10 items-center justify-center rounded-full border border-border-subtle text-lg leading-none ${isMobile ? "flex" : "hidden"}`}
+            >
+              ☰
+            </button>
+          </div>
+        </div>
+        {isMobile && menuOpen && (
+          <div className="flex flex-col gap-1 px-2 pb-2 pt-4">
+            {NAV_LINKS.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="rounded-xl px-3 py-2.5 text-base font-semibold text-gray-300 hover:bg-white/5 hover:text-white"
+              >
+                {link.label}
+              </a>
+            ))}
+            <Button
+              href={`mailto:${CONTACT_EMAIL}`}
+              className="mt-2 justify-center text-center"
+            >
+              Hire Me
+            </Button>
+          </div>
+        )}
+      </nav>
+    </header>
   );
 }
