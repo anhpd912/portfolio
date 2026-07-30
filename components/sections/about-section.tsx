@@ -1,37 +1,41 @@
 import { Reveal } from "@/components/ui/reveal";
 import { ABOUT_PARAGRAPHS, STATS } from "@/lib/about";
+import { TOOLKIT_SKILLS } from "@/lib/skills";
 
 export function AboutSection() {
   return (
-    <section id="about" aria-labelledby="about-heading" className="lazy-section relative overflow-hidden py-32">
-      <div
-        className="pointer-events-none absolute left-1/2 top-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-500/5 blur-[120px]"
-        aria-hidden="true"
-      />
-      <div className="relative mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-6 sm:grid-cols-2">
-        <Reveal>
-          <div className="mb-5 text-xs font-bold uppercase tracking-[0.25em] text-accent-a">About me</div>
+    <section id="about" aria-labelledby="about-heading" className="lazy-section py-32">
+      <div className="mx-auto grid max-w-[1280px] grid-cols-1 items-start gap-16 px-5 sm:px-10 lg:grid-cols-2 lg:px-16">
+        <Reveal className="flex flex-col gap-7">
           <h2
             id="about-heading"
-            className="m-0 text-balance text-[clamp(36px,4.5vw,56px)] font-black leading-tight tracking-tight"
+            className="m-0 text-[clamp(40px,5vw,64px)] font-bold leading-[0.95] tracking-tighter text-white"
           >
-            Backend is not just code. <span className="gradient-text">It&apos;s systems that scale.</span>
+            ENGINEERING WITH PURPOSE<span className="text-accent-a">.</span>
           </h2>
-        </Reveal>
-        <Reveal className="flex flex-col gap-7">
-          {ABOUT_PARAGRAPHS.map((paragraph, i) => (
-            <p
-              key={paragraph.slice(0, 24)}
-              className={`m-0 font-light leading-relaxed ${i === 0 ? "text-lg text-gray-300" : "text-gray-400"}`}
-            >
+          {ABOUT_PARAGRAPHS.map((paragraph) => (
+            <p key={paragraph.slice(0, 24)} className="m-0 text-base leading-relaxed text-gray-400">
               {paragraph}
             </p>
           ))}
-          <div className="flex flex-wrap gap-12 border-t border-border-subtle pt-7">
+          <div className="mt-2 flex flex-wrap gap-10">
             {STATS.map((stat) => (
               <div key={stat.label}>
-                <div className="text-[44px] font-black leading-none tracking-tight">{stat.value}</div>
-                <div className="mt-2 text-sm font-medium text-gray-400">{stat.label}</div>
+                <div className="text-4xl font-bold text-accent-a">{stat.value}</div>
+                <div className="mt-1 text-xs uppercase tracking-[0.2em] text-gray-400">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+        <Reveal className="rounded-3xl border border-border-subtle bg-white/5 p-9 backdrop-blur-md">
+          <div className="mb-6 text-xs font-semibold tracking-[0.25em] text-gray-400">MY TOOLKIT</div>
+          <div className="flex flex-wrap gap-2.5">
+            {TOOLKIT_SKILLS.map((skill) => (
+              <div
+                key={skill}
+                className="rounded-full border border-border-subtle px-[18px] py-2.5 text-sm text-gray-300 transition-all hover:border-accent-a hover:text-accent-a hover:shadow-[0_0_15px_rgba(0,223,143,0.3)]"
+              >
+                {skill}
               </div>
             ))}
           </div>

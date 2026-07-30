@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --font-family-primary: "Outfit", sans-serif;
+  --font-family-primary: "Space Grotesk", sans-serif;
   --font-size-base: 18px;
   --font-weight-base: 400;
   --line-height-base: 28px;
@@ -14,14 +14,15 @@
   --font-size-3xl: 30px;
   --font-size-4xl: 36px;
 
-  --color-surface-base: #0c1128;
+  --color-surface-base: #0d1116;
+  --color-surface-panel: #14181f;
   --color-text-primary: #ffffff;
   --color-text-secondary: #9ca3af;
   --color-text-muted: #4b5563;
   --color-surface-raised: rgba(255, 255, 255, 0.05);
   --color-border-subtle: rgba(255, 255, 255, 0.1);
-  --color-accent-a: #00f0ff;
-  --color-accent-b: #b026ff;
+  --color-accent-a: #00df8f;
+  --color-accent-b: #00b373;
 
   --space-1: 4px;
   --space-2: 8px;
@@ -39,6 +40,7 @@
 
 @theme inline {
   --color-surface-base: var(--color-surface-base);
+  --color-surface-panel: var(--color-surface-panel);
   --color-surface-raised: var(--color-surface-raised);
   --color-text-primary: var(--color-text-primary);
   --color-text-secondary: var(--color-text-secondary);
@@ -46,7 +48,7 @@
   --color-border-subtle: var(--color-border-subtle);
   --color-accent-a: var(--color-accent-a);
   --color-accent-b: var(--color-accent-b);
-  --font-display: var(--font-outfit), var(--font-family-primary);
+  --font-display: var(--font-space-grotesk), var(--font-family-primary);
 }
 
 @utility lazy-section {
@@ -59,6 +61,18 @@
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+}
+
+@utility stroke-text {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-accent-a);
+}
+
+@utility grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
 }
 
 html {
@@ -107,4 +121,31 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+@keyframes float-card {
+  0% {
+    transform: translateY(0) rotateZ(-1deg);
+  }
+  50% {
+    transform: translateY(-15px) rotateZ(1deg);
+  }
+  100% {
+    transform: translateY(0) rotateZ(-1deg);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+::selection {
+  background: var(--color-accent-a);
+  color: var(--color-surface-base);
 }

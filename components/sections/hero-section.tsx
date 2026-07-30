@@ -1,57 +1,45 @@
-"use client";
-
-import { useHeroParallax } from "@/hooks/use-hero-parallax";
-import { ChevronIcon } from "@/components/ui/icons";
-
-const HERO_BG_1 =
-  "https://strvid.nyc3.cdn.digitaloceanspaces.com/cloudinary/hero_city_outline_fzg37d.jpg";
-const HERO_BG_2 =
-  "https://strvid.nyc3.cdn.digitaloceanspaces.com/cloudinary/hero_city_iglhwn.jpg";
+import { Button } from "@/components/ui/button";
+import { HeroProfileCard } from "@/components/sections/hero-profile-card";
 
 export function HeroSection() {
-  const { sectionRef, revealRef, bg1Ref, bg2Ref, chevronRef } = useHeroParallax();
-
   return (
-    <section id="top" ref={sectionRef} className="relative h-[300vh]">
-      <div className="sticky top-0 h-screen overflow-hidden">
-        <div
-          ref={bg1Ref}
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url('${HERO_BG_1}')` }}
-        />
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-          <div className="mb-6 text-xs font-bold uppercase tracking-[0.3em] text-gray-400">
-            Phan Đức Anh — Java Back-end Developer
+    <section id="top" className="grid-bg relative flex min-h-screen items-center overflow-hidden">
+      <div
+        className="pointer-events-none absolute inset-0 flex items-center justify-center"
+        aria-hidden="true"
+      >
+        <div className="whitespace-nowrap text-[20vw] font-bold leading-none tracking-tighter text-white/[0.02]">
+          BACKEND
+        </div>
+      </div>
+      <div className="relative mx-auto grid w-full max-w-[1280px] grid-cols-1 items-center gap-16 px-5 pb-20 pt-[140px] sm:px-10 lg:grid-cols-2 lg:px-16">
+        <div className="flex flex-col gap-7">
+          <div className="flex items-center gap-2.5">
+            <div className="h-2 w-2 rounded-full bg-accent-a" />
+            <div className="text-xs font-semibold tracking-[0.25em] text-gray-400">
+              JAVA BACK-END DEVELOPER
+            </div>
           </div>
-          <h1 className="m-0 text-[clamp(48px,8vw,120px)] font-black leading-[1.1] tracking-tighter">
-            Imagine the Product
+          <h1 className="m-0 text-[clamp(52px,8vw,104px)] font-bold leading-[0.92] tracking-tighter text-white">
+            SCALABLE
+            <br />
+            <span className="stroke-text">SYSTEMS</span>
+            <span className="text-accent-a">.</span>
           </h1>
-        </div>
-
-        <div ref={revealRef} className="absolute inset-0" style={{ clipPath: "circle(0% at 50% 50%)" }}>
-          <div
-            ref={bg2Ref}
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url('${HERO_BG_2}')` }}
-          />
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-            <div className="mb-6 text-xs font-bold uppercase tracking-[0.3em] text-gray-300">
-              Java · Spring Boot · AI &amp; RAG Systems
-            </div>
-            <div className="gradient-text text-[clamp(48px,8vw,120px)] font-black leading-[1.1] tracking-tighter">
-              I Build the Backend
-            </div>
+          <p className="m-0 max-w-[480px] text-base leading-relaxed text-gray-400">
+            I&apos;m Phan Đức Anh — a Software Engineering student at FPT University Ha Noi building
+            AI-powered backends with Spring Boot, RAG pipelines, and event-driven architecture.
+          </p>
+          <div className="mt-2 flex flex-wrap gap-4">
+            <Button href="#work" variant="accent">
+              View My Work <span className="text-lg">→</span>
+            </Button>
+            <Button href="#contact" variant="ghost">
+              <span className="h-2 w-2 rounded-full bg-accent-a" /> Contact Me
+            </Button>
           </div>
         </div>
-
-        <div
-          ref={chevronRef}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-[chevron-bounce_2s_ease-in-out_infinite] text-gray-400"
-        >
-          <ChevronIcon size={32} />
-        </div>
+        <HeroProfileCard />
       </div>
     </section>
   );

@@ -1,41 +1,44 @@
-import type { IconKey } from "@/components/ui/icons";
-
-export type { IconKey };
-
-export const TECH_STACK: { name: string; icon: IconKey }[] = [
-  { name: "Java", icon: "code" },
-  { name: "Spring Boot", icon: "layers" },
-  { name: "PostgreSQL", icon: "db" },
-  { name: "Redis", icon: "zap" },
-  { name: "Docker", icon: "box" },
-  { name: "RabbitMQ", icon: "server" },
-  { name: "pgvector", icon: "brain" },
-  { name: "Next.js", icon: "globe" },
+export const TOOLKIT_SKILLS: string[] = [
+  "Java",
+  "Spring Boot",
+  "Spring AI",
+  "Spring Security",
+  "PostgreSQL",
+  "pgvector",
+  "Redis",
+  "RabbitMQ",
+  "Docker",
+  "JWT / OAuth",
+  "React.js",
+  "Next.js",
+  "Python",
+  "MongoDB",
+  "Git",
 ];
 
-export const SERVICES: { num: number; title: string; desc: string; icon: IconKey }[] = [
+export const PROCESS_STEPS: { title: string; desc: string }[] = [
   {
-    num: 1,
-    title: "Backend Development",
-    desc: "Spring Boot 3 APIs with Spring Security, JWT auth with rotating refresh tokens, Spring Data JPA and event-driven modular architectures.",
-    icon: "server",
+    title: "Requirements",
+    desc: "Clarify the domain, user stories, and non-functional needs — throughput, latency, security. Define what \"done\" means before writing a line of code.",
   },
   {
-    num: 2,
-    title: "AI & RAG Systems",
-    desc: "Agentic RAG pipelines with Spring AI — hybrid retrieval (pgvector + pg_trgm, RRF), grounding verification, and SSE-streamed AI chat.",
-    icon: "brain",
+    title: "Architecture",
+    desc: "Choose module boundaries and data flow: schema-per-module PostgreSQL, event-driven cross-module communication, query ports. Decide sync vs async (RabbitMQ, application events) up front.",
   },
   {
-    num: 3,
-    title: "Data & Infrastructure",
-    desc: "PostgreSQL, Redis, MongoDB and RabbitMQ. Schema-per-module design, async pipelines, rate limiting, Docker and MinIO object storage.",
-    icon: "db",
+    title: "API Design",
+    desc: "Contract-first REST endpoints with consistent error envelopes, pagination, and versioning. Secure by default: stateless JWT with rotating refresh tokens and rate limiting.",
   },
   {
-    num: 4,
-    title: "Frontend Development",
-    desc: "React and Next.js with TypeScript and Tailwind — responsive, accessible interfaces with design-token systems and static deployment.",
-    icon: "code",
+    title: "Implementation",
+    desc: "Spring Boot with clean layering — controllers thin, services testable, repositories via Spring Data JPA. AI features wired through Spring AI advisor chains with grounding checks.",
+  },
+  {
+    title: "Testing",
+    desc: "JUnit and Postman collections covering happy paths, auth edge cases, and failure modes. Verify RAG grounding and rate-limit behavior under load.",
+  },
+  {
+    title: "Deployment",
+    desc: "Dockerized services with health checks, environment-driven config, and CI via Git. Observability and graceful shutdown from day one.",
   },
 ];
