@@ -9,7 +9,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Phan Đức Anh — Java Back-end Developer",
+  title: "Phan Đức Anh - Java Back-end Developer",
   description: "Portfolio of Phan Đức Anh, Java back-end developer building Spring Boot APIs and AI/RAG systems.",
   icons: {
     icon: "/favicon-rainbow-text.svg",

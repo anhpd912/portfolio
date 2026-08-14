@@ -19,7 +19,7 @@ export const TOOLKIT_SKILLS: string[] = [
 export const PROCESS_STEPS: { title: string; desc: string }[] = [
   {
     title: "Requirements",
-    desc: "Clarify the domain, user stories, and non-functional needs — throughput, latency, security. Define what \"done\" means before writing a line of code.",
+    desc: "Clarify the domain, user stories, and non-functional needs: throughput, latency, security. Define what \"done\" means before writing a line of code.",
   },
   {
     title: "Architecture",
@@ -31,7 +31,7 @@ export const PROCESS_STEPS: { title: string; desc: string }[] = [
   },
   {
     title: "Implementation",
-    desc: "Spring Boot with clean layering — controllers thin, services testable, repositories via Spring Data JPA. AI features wired through Spring AI advisor chains with grounding checks.",
+    desc: "Spring Boot with clean layering: controllers thin, services testable, repositories via Spring Data JPA. AI features wired through Spring AI advisor chains with grounding checks.",
   },
   {
     title: "Testing",

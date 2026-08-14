@@ -3,6 +3,7 @@ import { HeroSection } from "@/components/sections/hero-section";
 import { AboutSection } from "@/components/sections/about-section";
 import { WorkSection } from "@/components/sections/work-section";
 import { ProcessSection } from "@/components/sections/process-section";
+import { EducationSection } from "@/components/sections/education-section";
 import { SiteFooter } from "@/components/sections/site-footer";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
         <AboutSection />
         <WorkSection />
         <ProcessSection />
+        <EducationSection />
       </main>
       <SiteFooter />
     </>
