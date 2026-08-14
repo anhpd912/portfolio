@@ -13,8 +13,10 @@ Source: https://phanducanh-backend-ro4wkl7.gamma.site/ (fetched 2026-06-23)
 - GitHub: https://github.com/anhpd912
 - LinkedIn: https://linkedin.com/in/anhpd9/
 
-## Education
-- Bachelor of Software Engineering, FPT University, Hanoi — Korean Software Engineering Specialization
+## Education & Experience (timeline)
+- 2025 - Present: Fresher Java Backend Developer, FPT Software, Ha Noi
+- 2022 - 2026: B.E. Software Engineering, FPT University Ha Noi, Korean SE specialization. GPA 3.5
+- 2019 - 2022: THPT Nam Duyên Hà, Thái Bình. Third Prize, Thái Bình Provincial Physics Olympiad (2022)
 
 ## Summary
 Focuses on high-throughput distributed systems and cloud-native deployments. Core expertise: REST APIs, containerized workflows, data-intensive applications.

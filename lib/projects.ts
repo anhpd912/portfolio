@@ -25,9 +25,9 @@ export const projects: Project[] = [
     letter: "S",
     gradient: "linear-gradient(135deg,#131a45,#3b1f66)",
     description:
-      "JLPT N5–N1 learning platform on a 13-module Spring Boot architecture: agentic RAG curriculum ingestion, document-grounded AI tutor, and pronunciation assessment. Team of 5 — Back-end Developer.",
+      "JLPT N5-N1 learning platform on a 13-module Spring Boot architecture: agentic RAG curriculum ingestion, document-grounded AI tutor, and pronunciation assessment. Team of 5, Back-end Developer.",
     role: "Back-end Developer · Team of 5",
-    period: "01/2026 — 05/2026",
+    period: "01/2026 - 05/2026",
     highlights: [
       "Agentic RAG curriculum import: Google Document AI OCR with GPT-4o Vision fallback and Corrective/Self-RAG grounding",
       "Document-grounded AI tutor: hybrid retrieval (dense HNSW + sparse pg_trgm fused with RRF) plus HyDE",
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     description:
       "Solo full-stack RAG system: chunked uploads through MinIO → RabbitMQ → Tika → pgvector, per-document AI chat, and async quiz & roadmap generation streamed live over SSE.",
     role: "Solo Developer",
-    period: "05/2026 — Now",
+    period: "05/2026 - Now",
     highlights: [
       "Chunked upload pipeline: MinIO → RabbitMQ → Apache Tika → TokenTextSplitter → pgvector embedding",
       "Per-document RAG chat via QuestionAnswerAdvisor and pgvector cosine similarity",
