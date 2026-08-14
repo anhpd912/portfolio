@@ -4,7 +4,7 @@ Source: https://phanducanh-backend-ro4wkl7.gamma.site/ (fetched 2026-06-23)
 
 ## Identity
 - Name: Phan Duc Anh
-- Title: Fresher Backend Engineer
+- Title: Java Backend Developer (1 year of experience)
 - Bio: Passionate about building scalable distributed systems. Open to backend and platform engineering roles — remote or hybrid.
 
 ## Contact
@@ -41,7 +41,7 @@ Focuses on high-throughput distributed systems and cloud-native deployments. Cor
 
 ## Languages
 - English: Fluent (TOEIC 750, L&R)
-- Korean: Fluent (TOPIK Level 4)
+- Korean: Fluent (TOPIK Level 5)
 
 ## Work preference
 Remote or hybrid, backend / platform engineering.

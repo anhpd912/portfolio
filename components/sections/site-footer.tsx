@@ -42,7 +42,7 @@ export function SiteFooter() {
             I HELP<span className="text-accent-a">?</span>
           </h2>
           <p className="m-0 max-w-[420px] text-[15px] leading-relaxed text-gray-400">
-            Open to Fresher Java Backend roles in Ha Noi. Let&apos;s talk about Spring Boot, RAG systems, or
+            Open to Java Backend roles in Ha Noi. Let&apos;s talk about Spring Boot, RAG systems, or
             your next backend.
           </p>
           <Button href={`mailto:${CONTACT_EMAIL}`}>

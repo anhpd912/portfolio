@@ -27,7 +27,7 @@ export function HeroSection() {
             <span className="text-accent-a">.</span>
           </h1>
           <p className="m-0 max-w-[480px] text-base leading-relaxed text-gray-400">
-            I&apos;m Phan Đức Anh — a Software Engineering student at FPT University Ha Noi building
+            I&apos;m Phan Đức Anh — a Java backend developer with 1 year of experience building
             AI-powered backends with Spring Boot, RAG pipelines, and event-driven architecture.
           </p>
           <div className="mt-2 flex flex-wrap gap-4">
